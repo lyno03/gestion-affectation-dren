@@ -1,0 +1,417 @@
+/* ===== Thème (clair / sombre) ===== */
+:root{
+  --bg:#2a62d0; --app:#ffffff; --side:#1f5fc4; --side2:#2f78e6;
+  --tx:#16233a; --mu:#66758c; --card:#eef3fb; --ln:#dbe4f2;
+  --pr:#1f5fc4; --soft:#dfeaff; --btn:#1f5fc4; --onbtn:#ffffff;
+  --ok:#1f7a4a; --okbg:#d9f0e2; --er:#b3392f; --erbg:#f9dcd8;
+  --wn:#7a5200; --wnbg:#fbeccb; --ac:#e0a020;
+  --sh:0 10px 34px rgba(10,35,100,.22);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  --bg:#0b1630; --app:#121e38; --side:#17418f; --side2:#1d57c2;
+  --tx:#e7edf8; --mu:#9aaac6; --card:#1a2a4a; --ln:#2a3b5f;
+  --pr:#7fb0ff; --soft:#1f3768; --btn:#3b7bea; --onbtn:#ffffff;
+  --ok:#6fd49b; --okbg:#173a2a; --er:#ff9a8f; --erbg:#44211e;
+  --wn:#f3d082; --wnbg:#40351a; --ac:#e0a020;
+  --sh:0 10px 34px rgba(0,0,0,.5);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--tx);
+  font-family:"Segoe UI",system-ui,Arial,sans-serif;font-size:15px;line-height:1.5;
+  transition:background .3s,color .3s}
+a{color:var(--pr)}
+h1,h2,h3{margin:0 0 10px;font-weight:600}
+h2{font-size:19px}h3{font-size:16px}
+small{color:var(--mu)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+
+/* ===== Coque de l'application ===== */
+.app{display:grid;grid-template-columns:262px 1fr;max-width:1380px;margin:24px auto;
+  min-height:calc(100vh - 48px);background:var(--app);border-radius:32px;
+  overflow:hidden;box-shadow:var(--sh);transition:background .3s}
+.col{min-width:0;display:flex;flex-direction:column}
+
+/* ===== Barre latérale ===== */
+.side{background:linear-gradient(180deg,var(--side) 0%,var(--side2) 100%);color:#fff;
+  border-top-right-radius:44px;padding:26px 18px 20px;display:flex;flex-direction:column;
+  gap:18px;position:relative;z-index:30}
+.marque{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:700;
+  text-decoration:none;color:#fff;padding:0 6px}
+.marque .logo{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--side);
+  display:grid;place-items:center;flex:none}
+.marque small{display:block;color:#cfe0ff;font-size:11px;font-weight:400;line-height:1.2}
+.bouton-haut{display:block;text-align:center;background:#fff;color:var(--side);font-weight:700;
+  border-radius:999px;padding:11px 16px;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.15);
+  transition:transform .15s}
+.bouton-haut:hover{transform:translateY(-2px)}
+.side nav{display:flex;flex-direction:column;gap:4px}
+.side .titre-nav{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#bcd2ff;
+  margin:12px 10px 4px}
+.side nav a{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;
+  color:#e3edff;text-decoration:none;font-size:14.5px;transition:background .15s,transform .15s}
+.side nav a:hover{background:rgba(255,255,255,.16);transform:translateX(3px)}
+.side nav a.actif{background:#fff;color:var(--side);font-weight:700}
+.resume{margin-top:auto;font-size:12.5px;color:#dbe8ff}
+.resume b{color:#fff}
+.barre{height:6px;background:rgba(255,255,255,.25);border-radius:6px;margin:6px 0 12px;overflow:hidden}
+.barre span{display:block;height:100%;background:#fff;border-radius:6px;transition:width 1s ease}
+.ico{flex:none}
+
+/* ===== Barre du haut ===== */
+.topbar{display:flex;align-items:center;gap:12px;padding:20px 30px 6px}
+.recherche{flex:1;max-width:480px;position:relative}
+.recherche .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--mu)}
+.recherche input{width:100%;padding:11px 44px 11px 42px;border-radius:999px;border:1px solid transparent;
+  background:var(--card);color:var(--tx);font-size:14px;transition:border .15s,background .15s}
+.recherche input:focus{outline:none;border-color:var(--pr);background:var(--app)}
+.recherche kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;
+  color:var(--mu);border:1px solid var(--ln);border-radius:6px;padding:0 6px}
+.espace{flex:1}
+.ico-btn{position:relative;width:42px;height:42px;border-radius:50%;border:0;background:var(--card);
+  color:var(--tx);display:grid;place-items:center;cursor:pointer;transition:background .15s,transform .15s}
+.ico-btn:hover{background:var(--soft);transform:translateY(-1px)}
+.pastille{position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;border-radius:9px;
+  background:var(--er);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--pr);color:var(--app);
+  display:grid;place-items:center;font-weight:700;font-size:14px}
+.profil{display:flex;align-items:center;gap:10px;border:0;background:none;color:var(--tx);
+  cursor:pointer;padding:0;font-size:14px;text-align:left}
+.profil small{display:block;line-height:1.1}
+.dd{position:relative}
+.dd-menu{position:absolute;right:0;top:calc(100% + 10px);background:var(--app);border:1px solid var(--ln);
+  border-radius:16px;box-shadow:var(--sh);min-width:250px;padding:10px;z-index:60;animation:monte .18s ease}
+.dd-menu a,.dd-menu .ligne-menu{display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:10px;
+  color:var(--tx);text-decoration:none;font-size:14px}
+.dd-menu a:hover{background:var(--soft)}
+.burger{display:none}
+
+/* ===== Contenu ===== */
+main{padding:6px 30px 30px;flex:1}
+.page-titre{display:flex;align-items:center;gap:14px;margin:14px 0 18px;flex-wrap:wrap}
+.page-titre h1{font-size:30px;color:var(--pr);margin:0}
+.page-titre .date{color:var(--mu);font-size:13px;background:var(--card);padding:4px 12px;border-radius:999px}
+main>*{animation:monte .4s ease both}
+@keyframes monte{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.carte{background:var(--card);border-radius:22px;padding:20px;margin-bottom:18px}
+.carte.tableau{background:var(--app);border:1px solid var(--ln);padding:16px;overflow-x:auto}
+.deux{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.deux .carte{margin-bottom:0}
+
+/* Cartes "dossier" du tableau de bord */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px;margin:16px 0 22px}
+.stat{position:relative;background:var(--card);border-radius:0 22px 22px 22px;padding:20px 18px 16px;
+  margin-top:12px;color:var(--mu);font-size:14px;transition:transform .2s,box-shadow .2s}
+.stat::before{content:"";position:absolute;left:0;top:-12px;width:46%;height:14px;background:inherit;
+  border-radius:14px 14px 0 0}
+.stat b{display:block;font-size:34px;line-height:1.1;color:var(--pr);margin-bottom:4px}
+.stat:hover{transform:translateY(-4px);box-shadow:0 10px 22px rgba(20,60,150,.18)}
+.stat:first-child{background:var(--btn);color:#e6efff}
+.stat:first-child b{color:#fff}
+
+/* ===== Tableaux ===== */
+table{width:100%;border-collapse:collapse}
+th{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--mu);text-align:left;
+  padding:10px 12px;border-bottom:2px solid var(--ln);white-space:nowrap}
+td{padding:12px;border-bottom:1px solid var(--ln);font-size:14px;vertical-align:top}
+tr:hover td{background:var(--soft)}
+th.tri{cursor:pointer;user-select:none}
+th.tri::after{content:" \2195";opacity:.35}
+th[aria-sort=ascending]::after{content:" \2191";opacity:1;color:var(--pr)}
+th[aria-sort=descending]::after{content:" \2193";opacity:1;color:var(--pr)}
+.filtre{display:flex;gap:10px;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+.filtre input{max-width:280px}
+.filtre span{color:var(--mu);font-size:13px}
+
+/* ===== Boutons, formulaires ===== */
+.btn{display:inline-block;background:var(--btn);color:var(--onbtn);border:0;padding:9px 18px;
+  border-radius:999px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;
+  text-decoration:none;transition:filter .15s,transform .15s;margin:2px 0}
+.btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn.sec{background:var(--soft);color:var(--pr)}
+.btn.danger{background:var(--er);color:#fff}
+.btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.actions form{display:flex;gap:6px;align-items:center;margin:0;flex-wrap:wrap}
+.champ{margin-bottom:14px}
+.champ label{display:block;font-size:13px;color:var(--mu);margin-bottom:4px}
+input[type=text],input[type=search],input[type=password],input[type=date],select{
+  font-family:inherit;font-size:14px;padding:10px 14px;border:1px solid var(--ln);border-radius:14px;
+  background:var(--app);color:var(--tx);max-width:100%;transition:border .15s,box-shadow .15s}
+input:focus,select:focus{outline:none;border-color:var(--pr);box-shadow:0 0 0 3px var(--soft)}
+.champ input,.champ select{width:100%;max-width:380px}
+input:disabled{background:var(--card);color:var(--mu)}
+
+/* ===== Messages ===== */
+.erreur,.succes,.alerte{padding:12px 16px;border-radius:14px;margin-bottom:14px;font-size:14px;
+  transition:opacity .5s,transform .5s}
+.erreur{background:var(--erbg);color:var(--er)}
+.succes{background:var(--okbg);color:var(--ok);cursor:pointer}
+.alerte{background:var(--wnbg);color:var(--wn)}
+.fermer{opacity:0;transform:translateY(-6px)}
+
+/* ===== Badges, fiche, parcours, barres ===== */
+.badge{display:inline-block;padding:2px 10px;border-radius:999px;font-size:12px;background:var(--soft);
+  color:var(--pr);font-weight:600}
+.badge.off{background:var(--erbg);color:var(--er)}
+.grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.grille div{font-size:14px}
+.grille small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.parcours{list-style:none;margin:0;padding:0 0 0 16px;border-left:2px solid var(--ln)}
+.parcours li{position:relative;padding:0 0 16px 16px;font-size:14px}
+.parcours li::before{content:"";position:absolute;left:-23px;top:5px;width:12px;height:12px;
+  border-radius:50%;background:var(--ac);box-shadow:0 0 0 4px var(--card)}
+.parcours li.actuel::before{background:var(--ok)}
+.ligne{display:grid;grid-template-columns:minmax(120px,230px) 1fr 34px;gap:10px;align-items:center;
+  margin:8px 0;font-size:14px}
+.ligne i{display:block;height:10px;border-radius:6px;min-width:3px;transform-origin:left;
+  background:linear-gradient(90deg,var(--pr),var(--side2));animation:grow .9s ease both}
+.ligne b{text-align:right}
+@keyframes grow{from{transform:scaleX(0)}}
+
+/* ===== Page de connexion ===== */
+body.login{display:grid;place-items:center;min-height:100vh;padding:16px}
+.login-card{background:var(--app);border-radius:30px;padding:36px 32px;width:100%;max-width:410px;
+  box-shadow:var(--sh);animation:monte .5s ease both}
+.login-card .logo{width:54px;height:54px;border-radius:16px;background:var(--btn);color:#fff;
+  display:grid;place-items:center;margin-bottom:14px}
+.login-card h1{font-size:21px;color:var(--pr);margin-bottom:4px}
+.login-card p{color:var(--mu);margin:0 0 20px;font-size:14px}
+.login-card input{width:100%;max-width:none;margin-bottom:14px}
+.mdp-ligne{position:relative}
+.mdp-ligne button{position:absolute;right:10px;top:8px;border:0;background:none;color:var(--pr);
+  cursor:pointer;font-size:13px;font-weight:600}
+.login-card .btn{width:100%;padding:12px}
+
+/* ===== Écrans étroits ===== */
+.voile{display:none}
+@media (max-width:900px){
+  body{background:var(--app)}
+  .app{display:block;margin:0;border-radius:0;box-shadow:none}
+  .side{position:fixed;left:0;top:0;bottom:0;width:272px;transform:translateX(-105%);
+    transition:transform .3s;overflow-y:auto;border-top-right-radius:30px}
+  body.menu-ouvert .side{transform:none}
+  body.menu-ouvert .voile{display:block;position:fixed;inset:0;background:rgba(5,15,40,.5);z-index:20}
+  .burger{display:grid}
+  .topbar{padding:14px 16px 4px}
+  main{padding:6px 16px 24px}
+  .profil span{display:none}
+  .recherche kbd{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{.side,.topbar{display:none}.app{margin:0;box-shadow:none;display:block}body{background:#fff}}
+
+/* ===== Page Rapports : à coller à la FIN de assets/style.css ===== */
+.sous-titre{color:var(--mu);margin:-8px 0 18px}
+.rap-barre{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-end;margin-bottom:8px}
+.rap-barre form{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end;margin:0}
+.rap-barre .grow{flex:1 1 520px}
+.rap-barre .champ{margin-bottom:0}
+.periode{display:flex;align-items:center;gap:8px}
+.btn .ico{vertical-align:-4px;margin-right:4px}
+
+/* Cartes de chiffres clés colorées */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:18px}
+.kpi{display:flex;gap:14px;align-items:center;border-radius:22px;padding:18px;transition:transform .2s,box-shadow .2s}
+.kpi:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(20,60,150,.15)}
+.kpi-ico{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;flex:none;background:rgba(255,255,255,.75)}
+.kpi .t{display:block;font-size:14px;color:var(--tx)}
+.kpi b{display:block;font-size:34px;line-height:1.15;color:var(--tx)}
+.kpi small{color:var(--mu)}
+.kpi.bleu{background:#e8f0fe;color:#2f7bf0}
+.kpi.vert{background:#e1f6ec;color:#1f9d63}
+.kpi.orange{background:#fdf0dc;color:#d98a12}
+.kpi.violet{background:#efe9fd;color:#7c4ddf}
+:root[data-theme="dark"] .kpi.bleu{background:#1b3159}
+:root[data-theme="dark"] .kpi.vert{background:#17382d}
+:root[data-theme="dark"] .kpi.orange{background:#40331a}
+:root[data-theme="dark"] .kpi.violet{background:#2e2552}
+:root[data-theme="dark"] .kpi-ico{background:rgba(255,255,255,.12)}
+
+/* Deux graphiques côte à côte */
+.rap-graphes{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:18px;margin-bottom:18px}
+.rap-graphes .carte{margin-bottom:0}
+@media (max-width:1000px){.rap-graphes{grid-template-columns:1fr}}
+
+/* Histogramme */
+.bar-chart{display:flex;align-items:flex-end;gap:14px;border-bottom:1px solid var(--ln);padding-top:6px}
+.bar-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center}
+.bar-zone{height:210px;width:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}
+.bar-val{font-weight:700;font-size:14px;height:22px}
+.bar-fill{width:min(70%,64px);height:calc((100% - 22px) * var(--h));min-height:2px;border-radius:8px 8px 0 0;
+  background:linear-gradient(180deg,#3b8bff,#2f6fe0);transform-origin:bottom;animation:pousse .8s ease both}
+@keyframes pousse{from{transform:scaleY(0)}}
+.bar-lab{width:100%;font-size:12px;color:var(--mu);text-align:center;margin-top:8px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Anneau */
+.donut-bloc{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.donut{width:190px;height:190px;flex:none;transform:none}
+.donut circle{transform:rotate(0deg);transition:stroke-width .2s}
+.donut text{fill:var(--tx)}
+.legende{list-style:none;margin:0;padding:0;flex:1;min-width:180px}
+.legende li{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px}
+.legende i{width:12px;height:12px;border-radius:50%;flex:none}
+.legende span{flex:1}
+
+/* Liste des rapports */
+.entete-liste{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.entete-liste h3{margin:0}
+.fmt{display:inline-block;padding:2px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.fmt.pdf{background:#fde2e0;color:#c0362c}
+.fmt.xls{background:#dcf3e6;color:#1e7a48}
+:root[data-theme="dark"] .fmt.pdf{background:#4a2420;color:#ff9a8f}
+:root[data-theme="dark"] .fmt.xls{background:#173a2a;color:#6fd49b}
+.ico-act{width:36px;height:36px;border-radius:10px;border:1px solid var(--ln);display:inline-grid;
+  place-items:center;color:var(--pr);text-decoration:none;transition:background .15s,transform .15s}
+.ico-act:hover{background:var(--soft);transform:translateY(-1px)}
+/* ===== Page Personnels : à coller à la FIN de assets/style.css ===== */
+/* (les classes .kpi, .sous-titre, .ico-act et .entete-liste viennent du bloc Rapports : colle-le d'abord s'il manque) */
+
+.filtres-grille{display:grid;grid-template-columns:minmax(200px,1.5fr) repeat(3,minmax(150px,1fr)) auto;
+  gap:14px;align-items:end}
+.filtres-grille .champ{margin:0}
+.filtres-grille select,.filtres-grille input{width:100%;max-width:none}
+@media (max-width:1100px){.filtres-grille{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.filtres-grille{grid-template-columns:1fr}}
+
+.rech-in{position:relative}
+.rech-in .ico{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--mu);pointer-events:none}
+.rech-in input{padding-left:42px}
+.btn .ico{vertical-align:-4px;margin-right:4px}
+.carte-titre{display:flex;align-items:center;gap:10px}
+
+/* En-têtes triables (tri côté serveur) */
+th .th-tri{color:inherit;text-decoration:none}
+th .th-tri:hover{color:var(--pr)}
+
+/* Badges de statut */
+.statut{display:inline-block;padding:2px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.statut.poste{background:#dcf3e6;color:#1e7a48}
+.statut.conge{background:#fdebd0;color:#b36b00}
+.statut.attente{background:#fbeccb;color:#7a5200}
+.statut.retraite{background:#e6e9ef;color:#4a5568}
+.statut.autre{background:var(--soft);color:var(--pr)}
+:root[data-theme="dark"] .statut.poste{background:#173a2a;color:#6fd49b}
+:root[data-theme="dark"] .statut.conge{background:#4a3416;color:#f3c27a}
+:root[data-theme="dark"] .statut.attente{background:#40351a;color:#f3d082}
+:root[data-theme="dark"] .statut.retraite{background:#2a3347;color:#b8c2d6}
+
+/* Boutons d'action du tableau (bouton Supprimer = <button>) */
+button.ico-act{background:none;cursor:pointer;font:inherit;padding:0}
+.ico-act.rouge{color:var(--er)}
+.ico-act.rouge:hover{background:var(--erbg)}
+td.actions form{margin:0}
+
+/* Pied de liste et pagination */
+.pied-liste{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-top:14px;color:var(--mu);font-size:13px}
+.pagination{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.pg{min-width:36px;height:36px;padding:0 8px;border-radius:10px;border:1px solid var(--ln);
+  display:inline-grid;place-items:center;color:var(--tx);text-decoration:none;font-size:14px;
+  transition:background .15s}
+.pg:hover{background:var(--soft)}
+.pg.actif{background:var(--btn);border-color:var(--btn);color:#fff;font-weight:700}
+.pg-sep{color:var(--mu);padding:0 4px}
+/* ===== Demandes d'affectation : à coller à la FIN de assets/style.css ===== */
+
+/* Pastille de compteur dans le menu latéral */
+.nav-badge{margin-left:auto;background:#ff5a4f;color:#fff;font-size:11px;font-weight:700;
+  min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 6px}
+
+/* Statuts des demandes */
+.dem{display:inline-block;padding:2px 12px;border-radius:999px;font-size:12px;font-weight:700;white-space:nowrap}
+.dem.attente{background:#fbeccb;color:#7a5200}
+.dem.acceptee{background:#dcf3e6;color:#1e7a48}
+.dem.refusee{background:#fde2e0;color:#c0362c}
+:root[data-theme="dark"] .dem.attente{background:#40351a;color:#f3d082}
+:root[data-theme="dark"] .dem.acceptee{background:#173a2a;color:#6fd49b}
+:root[data-theme="dark"] .dem.refusee{background:#4a2420;color:#ff9a8f}
+
+/* Onglets En attente / Acceptées / Refusées / Toutes */
+.onglets{display:flex;gap:8px;flex-wrap:wrap}
+.onglets a{padding:8px 16px;border-radius:999px;background:var(--app);border:1px solid var(--ln);
+  color:var(--tx);text-decoration:none;font-size:14px;transition:background .15s}
+.onglets a:hover{background:var(--soft)}
+.onglets a b{margin-left:6px;background:var(--soft);color:var(--pr);border-radius:10px;padding:0 8px;font-size:12px}
+.onglets a.sel{background:var(--btn);border-color:var(--btn);color:#fff}
+.onglets a.sel b{background:rgba(255,255,255,.25);color:#fff}
+.fleche{color:var(--mu);margin:0 4px}
+
+/* Boutons Accepter / Refuser qui déplient leur formulaire */
+details.action{display:block;margin:4px 0}
+details.action summary{list-style:none;cursor:pointer;display:inline-block}
+details.action summary::-webkit-details-marker{display:none}
+.panneau{margin-top:8px;padding:14px;background:var(--card);border-radius:16px;min-width:250px;max-width:320px}
+.panneau .champ{margin-bottom:10px}
+.panneau input,.panneau select,.panneau textarea{width:100%;max-width:none}
+textarea{font-family:inherit;font-size:14px;padding:10px 14px;border:1px solid var(--ln);
+  border-radius:14px;background:var(--app);color:var(--tx);max-width:100%;width:100%;resize:vertical}
+textarea:focus{outline:none;border-color:var(--pr);box-shadow:0 0 0 3px var(--soft)}
+/* ===== Identité de la personne connectée : à coller à la FIN de assets/style.css ===== */
+
+/* Bouton du profil dans la barre du haut : nom + fonction · lieu de travail */
+.profil-txt{display:flex;flex-direction:column;line-height:1.25;max-width:240px;text-align:left}
+.profil-txt b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.profil-txt small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--mu)}
+
+/* Bloc d'identité du menu déroulant */
+.id-bloc{padding:6px 12px 10px;border-bottom:1px solid var(--ln);margin-bottom:6px}
+.id-bloc b{display:block;font-size:15px}
+.id-bloc small{display:block;color:var(--mu)}
+
+/* Pastille « qui est connecté » à côté du titre de chaque page */
+.qui{display:inline-flex;align-items:center;gap:6px;background:var(--soft);color:var(--pr);
+  padding:4px 14px;border-radius:999px;font-size:13px;font-weight:600;max-width:100%}
+.qui .ico{width:16px;height:16px}
+
+/* Écrans étroits : on garde l'avatar, on cache le texte du profil */
+@media (max-width:900px){
+  .profil .profil-txt{display:none}
+  .profil .avatar{display:grid}
+  .qui{font-size:12px;border-radius:14px}
+}
+/* ===== Demandes de personnel : à coller à la FIN de assets/style.css ===== */
+/* (les classes .dem, .onglets, details.action, .panneau et textarea viennent du bloc « Demandes d'affectation » :
+   colle-le d'abord s'il manque) */
+
+/* Niveau d'urgence */
+.urg{display:inline-block;padding:2px 12px;border-radius:999px;font-size:12px;font-weight:700;
+  background:var(--soft);color:var(--pr);white-space:nowrap}
+.urg.urgente{background:#fde2e0;color:#c0362c}
+:root[data-theme="dark"] .urg.urgente{background:#4a2420;color:#ff9a8f}
+
+/* Choix du type de personnel : boutons radio alignés */
+.champ input[type=radio]{width:auto;max-width:none;margin-right:6px}
+.champ label:has(input[type=radio]){display:flex;align-items:center;color:var(--tx);font-size:14px;
+  margin:4px 0;cursor:pointer}
+
+/* Le menu latéral garde une ligne propre avec les libellés plus longs */
+.side nav a{white-space:nowrap}
+
+/* ===== Logos (Ministère + DREN) ===== */
+.marque{flex-direction:column;align-items:flex-start;gap:10px}
+.marque .logos{display:flex;flex-direction:row;align-items:center;gap:10px}
+.marque .logos img,.login-logos img,.bandeau-logos img{background:#fff;border-radius:50%;padding:3px;
+  object-fit:contain;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.marque .logos img{width:56px;height:56px}
+.marque-txt{line-height:1.2}
+.login-logos{display:flex;justify-content:center;gap:14px;margin-bottom:14px}
+.login-logos img{width:84px;height:84px}
+.login-card h1,.login-card>p{text-align:center}
+.bandeau-accueil{display:block}
+.bandeau-logos{display:flex;gap:14px;flex:none}
+.bandeau-logos img{width:92px;height:92px}
+.bandeau-txt{flex:1;min-width:220px}
+.bandeau-txt small{display:block;line-height:1.35}
+.bandeau-txt h2{margin:8px 0 2px}
+.bandeau-txt p{margin:0}
+@media (max-width:600px){.bandeau-logos img{width:68px;height:68px}}
+/* ===== Demandes de congé ===== */
+.dem.annulee{background:#e6e9ef;color:#4a5568}
+:root[data-theme="dark"] .dem.annulee{background:#2a3347;color:#b8c2d6}
